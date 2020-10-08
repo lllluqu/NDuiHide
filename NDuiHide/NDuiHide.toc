@@ -1,0 +1,9 @@
+## Interface: 80300
+## Title: NDui HideUF
+## Notes: HideUF for NDui
+## Notes-zhCN: 隐藏NDui头像框体
+## RequiredDeps: NDui
+## Version: 1.0
+## Author: aBigGhost
+
+NDuiHide.lua
