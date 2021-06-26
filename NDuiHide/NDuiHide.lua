@@ -9,7 +9,8 @@ local Event = CreateFrame("Frame")
 	Event:RegisterEvent("PLAYER_TARGET_CHANGED")
 Event:SetScript("OnEvent",function(self, event, ...) 
 	local InCombat, Target = InCombatLockdown(),UnitExists("target")
-	if event == "PLAYER_ENTERING_WORLD" and (UnitHealth("player") / UnitHealthMax("player") == 1) then 
+	if ( event == "PLAYER_ENTERING_WORLD" ) then 
+		oUF_Player.Health.backdrop.__shadow:SetAlpha(0)
 		oUF_Player:EnableMouse(false)
 		oUF_Player.Health:SetAlpha(0)
 		oUF_Player.Health.backdrop:SetAlpha(0)
@@ -26,8 +27,8 @@ Event:SetScript("OnEvent",function(self, event, ...)
 		oUF_Player.PhaseIndicator:SetAlpha(0)
 		oUF_Player.LeaderIndicator:SetAlpha(0)
 		oUF_Player.AssistantIndicator:SetAlpha(0)
-		oUF_Player.MasterLooterIndicator:SetAlpha(0)
 		oUF_Player.RaidTargetIndicator:SetAlpha(0) 
+		oUF_Player.CombatIndicator:SetAlpha(0)
 		oUF_Pet:EnableMouse(false)
 		oUF_Pet:SetAlpha(0)
 		oUF_Target:SetAlpha(0)
@@ -37,21 +38,3 @@ Event:SetScript("OnEvent",function(self, event, ...)
 	end
 end)
 
-Event:SetScript("OnUpdate",function(self, event, ...) 
-	local CheckInteractDistance = CheckInteractDistance
-	if ( CheckInteractDistance("target", 4) ) then
-		oUF_Pet:EnableMouse(false)
-		oUF_Pet:SetAlpha(0)
-		oUF_ToT:SetAlpha(0)
-		oUF_ToT:EnableMouse(false)
-		oUF_Target:SetAlpha(0)
-		oUF_Target:EnableMouse(false)
-	else
-		oUF_Pet:EnableMouse(false)
-		oUF_Pet:SetAlpha(0)
-		oUF_ToT:SetAlpha(0)
-		oUF_ToT:EnableMouse(false)
-		oUF_Target:SetAlpha(0)
-		oUF_Target:EnableMouse(false)
-	end
-end)
